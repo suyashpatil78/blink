@@ -34,6 +34,20 @@
   "bundle": {
     "active": true,
     "targets": ["deb", "appimage"],
+    "shortDescription": "Keyboard-driven app launcher for Linux",
+    "longDescription": "Blink is a lightweight launcher: press Ctrl+Space, type an application name, and open it. Ships as a standard .deb for Debian and Ubuntu-based systems.",
+    "linux": {
+      "deb": {
+        "depends": [
+          "libwebkit2gtk-4.1-0",
+          "libgtk-3-0",
+          "libglib2.0-bin",
+          "libgtk-3-bin"
+        ],
+        "section": "utils",
+        "priority": "optional"
+      }
+    },
     "icon": [
       "icons/32x32.png",
       "icons/128x128.png",

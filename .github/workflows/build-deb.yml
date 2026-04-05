@@ -1,0 +1,60 @@
+# Builds a release .deb on Ubuntu (good default for Debian-derived distros).
+# Attach the artifact from the Actions run, or run this on tag push and upload to Releases.
+#
+# Note: binaries are linked against the runner's glibc — for widest Debian compatibility,
+# build on an older LTS (e.g. ubuntu-22.04) or in a Docker image matching your minimum target.
+# See: https://v2.tauri.app/distribute/debian/
+
+name: Build Linux .deb
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  deb:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install system dependencies (Tauri / WebKitGTK)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libwebkit2gtk-4.1-dev \
+            build-essential \
+            curl \
+            wget \
+            file \
+            libssl-dev \
+            libgtk-3-dev \
+            libayatana-appindicator3-dev \
+            librsvg2-dev \
+            patchelf
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - name: Install frontend deps
+        run: npm ci
+
+      - name: Build .deb (and AppImage)
+        run: npm run tauri build
+
+      - name: Upload .deb artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: blink-deb
+          path: src-tauri/target/release/bundle/deb/*.deb
+
+      - name: Upload AppImage artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: blink-appimage
+          path: src-tauri/target/release/bundle/appimage/*.AppImage
