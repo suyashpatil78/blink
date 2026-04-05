@@ -1,7 +1,9 @@
-# Tauri + Angular
+# Blink
 
-This template should help get you started developing with Tauri and Angular.
+## Usage
 
-## Recommended IDE Setup
+- First install the software by downloading the .deb [file](https://github.com/suyashpatil78/blink/releases/download/v0.1.0/blink.deb)
 
-[VS Code](https://code.visualstudio.com/) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer) + [Angular Language Service](https://marketplace.visualstudio.com/items?itemName=Angular.ng-template).
+- Run `sudo apt install -y blink.deb` in the directory where the .deb file exists.
+
+- Register `ctrl + space` shortcut to blink. You can do that by searching `Shortcuts` in your system. Add a custom shortcut and add `/usr/bin/blink` as Command. You would be able to launch blink now.
