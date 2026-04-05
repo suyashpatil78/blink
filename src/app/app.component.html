@@ -1,0 +1,18 @@
+<main class="launcher">
+  <form class="launcher-bar" (submit)="runQuery($event, queryInput.value)">
+    <input
+      #queryInput
+      class="launcher-input"
+      type="search"
+      name="q"
+      autocomplete="off"
+      spellcheck="false"
+      placeholder="Search or run a command…"
+      aria-label="Search"
+    />
+  </form>
+  @if (result()) {
+    <p class="launcher-hint">{{ result() }}</p>
+  }
+  <router-outlet />
+</main>

@@ -1,0 +1,63 @@
+:host {
+  display: block;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+}
+
+.launcher {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  height: 100%;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.launcher-bar {
+  margin: 0;
+  flex: 1;
+  display: flex;
+  align-items: stretch;
+  min-height: 0;
+}
+
+.launcher-input {
+  flex: 1;
+  width: 100%;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 12px;
+  padding: 14px 18px;
+  font-size: 1.05rem;
+  font-weight: 450;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  color: #f4f4f5;
+  background: rgba(24, 24, 27, 0.82);
+  outline: none;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.launcher-input::placeholder {
+  color: rgba(244, 244, 245, 0.45);
+}
+
+.launcher-input:focus {
+  box-shadow: 0 8px 36px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(99, 102, 241, 0.45) inset;
+}
+
+.launcher-hint {
+  margin: 0;
+  padding: 0 6px;
+  font-size: 0.8rem;
+  line-height: 1.35;
+  color: rgba(244, 244, 245, 0.55);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
