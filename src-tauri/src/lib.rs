@@ -1,9 +1,22 @@
 // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
+mod apps;
+
+use apps::AppSuggestion;
 use tauri::Manager;
 
 #[tauri::command]
 fn greet(name: &str) -> String {
     format!("Hello, {}! You've been greeted from Rust!", name)
+}
+
+#[tauri::command]
+fn search_apps(query: String) -> Result<Vec<AppSuggestion>, String> {
+    apps::search_apps(query)
+}
+
+#[tauri::command]
+fn launch_app(desktop_file_path: String) -> Result<(), String> {
+    apps::launch_desktop_file(desktop_file_path)
 }
 
 #[tauri::command]
@@ -51,7 +64,12 @@ pub fn run() {
             }
             Ok(())
         })
-        .invoke_handler(tauri::generate_handler![greet, hide_main_window])
+        .invoke_handler(tauri::generate_handler![
+            greet,
+            hide_main_window,
+            search_apps,
+            launch_app
+        ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

@@ -1,5 +1,5 @@
 <main class="launcher">
-  <form class="launcher-bar" (submit)="runQuery($event, queryInput.value)">
+  <form class="launcher-bar" (submit)="onSubmit($event)">
     <input
       #queryInput
       class="launcher-input"
@@ -7,12 +7,42 @@
       name="q"
       autocomplete="off"
       spellcheck="false"
-      placeholder="Search or run a command…"
-      aria-label="Search"
+      placeholder="Type an app name…"
+      aria-label="Search applications"
+      aria-controls="suggestion-list"
+      [attr.aria-activedescendant]="
+        suggestions().length ? 'suggestion-' + selectedIndex() : null
+      "
+      (input)="onQueryInput(queryInput.value)"
     />
   </form>
-  @if (result()) {
-    <p class="launcher-hint">{{ result() }}</p>
+
+  @if (suggestions().length) {
+    <ul
+      id="suggestion-list"
+      class="suggestions"
+      role="listbox"
+      aria-label="Matching applications"
+    >
+      @for (app of suggestions(); track app.desktopPath; let i = $index) {
+        <li
+          [id]="'suggestion-' + i"
+          class="suggestion"
+          [class.suggestion-active]="i === selectedIndex()"
+          role="option"
+          [attr.aria-selected]="i === selectedIndex()"
+          (mouseenter)="selectedIndex.set(i)"
+          (mousedown)="onSuggestionPick(app, $event)"
+        >
+          {{ app.name }}
+        </li>
+      }
+    </ul>
   }
+
+  @if (errorHint()) {
+    <p class="launcher-hint launcher-hint-error">{{ errorHint() }}</p>
+  }
+
   <router-outlet />
 </main>

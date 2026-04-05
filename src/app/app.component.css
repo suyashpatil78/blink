@@ -16,10 +16,9 @@
 
 .launcher-bar {
   margin: 0;
-  flex: 1;
+  flex: 0 0 auto;
   display: flex;
   align-items: stretch;
-  min-height: 0;
 }
 
 .launcher-input {
@@ -51,6 +50,35 @@
     0 0 0 1px rgba(99, 102, 241, 0.45) inset;
 }
 
+.suggestions {
+  list-style: none;
+  margin: 0;
+  padding: 4px 0;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  border-radius: 12px;
+  background: rgba(18, 18, 21, 0.72);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.suggestion {
+  margin: 0;
+  padding: 10px 16px;
+  font-size: 0.95rem;
+  color: rgba(244, 244, 245, 0.88);
+  cursor: pointer;
+  user-select: none;
+}
+
+.suggestion:hover,
+.suggestion-active {
+  background: rgba(99, 102, 241, 0.28);
+  color: #fafafa;
+}
+
 .launcher-hint {
   margin: 0;
   padding: 0 6px;
@@ -60,4 +88,9 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.launcher-hint-error {
+  color: rgba(251, 113, 133, 0.95);
+  white-space: normal;
 }
