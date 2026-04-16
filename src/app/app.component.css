@@ -8,10 +8,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   min-height: 100vh;
   width: 100%;
-  padding: 0 1.5rem 1.5rem;
+  padding: 30vh 1.5rem 1.5rem;
   background: rgba(12, 12, 14, 0.2);
   color: #f4f4f5;
 }
@@ -22,6 +22,7 @@
   padding: 0;
   border: none;
   outline: none;
+  flex-shrink: 0;
 }
 
 .search-input {
@@ -60,6 +61,7 @@
 }
 
 .hint {
+  flex-shrink: 0;
   margin-top: 1rem;
   font-size: 0.8125rem;
   color: rgba(255, 255, 255, 0.35);
