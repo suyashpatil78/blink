@@ -1,5 +1,8 @@
 // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
+mod apps;
+
 use tauri::Manager;
+use apps::{search_apps, AppSuggestion};
 
 #[tauri::command]
 fn greet(name: &str) -> String {
@@ -12,6 +15,16 @@ fn hide_launcher(app: tauri::AppHandle) -> Result<(), String> {
         .ok_or_else(|| "main window not found".to_string())?
         .hide()
         .map_err(|e| e.to_string())
+}
+
+#[tauri::command]
+fn search_apps_command(query: &str) -> Result<Vec<AppSuggestion>, String> {
+    search_apps(query.to_string())
+}
+
+#[tauri::command]
+fn launch_desktop_file(path: String) -> Result<(), String> {
+    apps::launch_desktop_file(path)
 }
 
 #[cfg(not(any(target_os = "android", target_os = "ios")))]
@@ -44,7 +57,7 @@ pub fn run() {
     }
 
     builder
-        .invoke_handler(tauri::generate_handler![greet, hide_launcher])
+        .invoke_handler(tauri::generate_handler![greet, hide_launcher, search_apps_command, launch_desktop_file])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
