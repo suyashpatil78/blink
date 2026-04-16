@@ -8,15 +8,15 @@
   <a href="https://github.com/suyashpatil78/blink/releases">
     <img src="https://img.shields.io/badge/release-v0.1.0-blue" alt="Release" />
   </a>
-  &nbsp;
+
   <a href="https://v2.tauri.app">
     <img src="https://img.shields.io/badge/stack-Tauri%202-26A8A6?style=flat-square&logo=tauri&logoColor=white" alt="Tauri" />
   </a>
-  &nbsp;
+
   <a href="https://angular.dev">
     <img src="https://img.shields.io/badge/UI-Angular%2020-DD0031?style=flat-square&logo=angular&logoColor=white" alt="Angular" />
   </a>
-  &nbsp;
+
   <img src="https://img.shields.io/badge/platform-linux-FCC624?style=flat-square&logo=linux&logoColor=black" alt="Linux" />
 </p>
 

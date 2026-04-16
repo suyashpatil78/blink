@@ -14,7 +14,7 @@
       autofocus
     />
   </form>
-  <p class="hint"><kbd>Ctrl</kbd> + <kbd>Space</kbd> to open · <kbd>Esc</kbd> to hide · <kbd>Enter</kbd> to run first result</p>
+
   @if (showSuggestionList()) {
     <ul class="app-suggestions" role="listbox" aria-label="App matches">
       @for (s of appSuggestions(); track s.desktopPath) {
