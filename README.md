@@ -6,15 +6,7 @@
 
 <p>
   <a href="https://github.com/suyashpatil78/blink/releases">
-    <img src="https://img.shields.io/github/v/release/suyashpatil78/blink?label=RELEASE&logo=github&style=flat-square&color=blue" alt="Release" />
-  </a>
-  &nbsp;
-  <a href="https://github.com/suyashpatil78/blink/blob/master/README.md">
-    <img src="https://img.shields.io/badge/DOCS-README-7c3aed?style=flat-square&logo=readthedocs&logoColor=white" alt="Docs" />
-  </a>
-  &nbsp;
-  <a href="https://github.com/suyashpatil78/blink">
-    <img src="https://img.shields.io/github/license/suyashpatil78/blink?style=flat-square&label=LICENSE" alt="License" />
+    <img src="https://img.shields.io/badge/release-v0.1.0-blue" alt="Release" />
   </a>
   &nbsp;
   <a href="https://v2.tauri.app">
