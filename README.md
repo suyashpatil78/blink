@@ -1,29 +1,64 @@
-# Blink
+<div align="center">
 
-A small, fast **desktop application launcher** for Linux. Press **Ctrl+Space**, type a few letters of an app name, hit **Enter** to launch the top match, or pick from the list. Built with [Tauri 2](https://v2.tauri.app/) and [Angular](https://angular.dev/) so the UI stays light while the heavy lifting stays on the system side.
+<img src="src-tauri/icons/128x128.png" width="128" height="128" alt="Blink" />
+
+### A lightweight, fast desktop application launcher for Linux
+
+<p>
+  <a href="https://github.com/suyashpatil78/blink/releases">
+    <img src="https://img.shields.io/github/v/release/suyashpatil78/blink?label=RELEASE&logo=github&style=flat-square&color=blue" alt="Release" />
+  </a>
+  &nbsp;
+  <a href="https://github.com/suyashpatil78/blink/blob/master/README.md">
+    <img src="https://img.shields.io/badge/DOCS-README-7c3aed?style=flat-square&logo=readthedocs&logoColor=white" alt="Docs" />
+  </a>
+  &nbsp;
+  <a href="https://github.com/suyashpatil78/blink">
+    <img src="https://img.shields.io/github/license/suyashpatil78/blink?style=flat-square&label=LICENSE" alt="License" />
+  </a>
+  &nbsp;
+  <a href="https://v2.tauri.app">
+    <img src="https://img.shields.io/badge/stack-Tauri%202-26A8A6?style=flat-square&logo=tauri&logoColor=white" alt="Tauri" />
+  </a>
+  &nbsp;
+  <a href="https://angular.dev">
+    <img src="https://img.shields.io/badge/UI-Angular%2020-DD0031?style=flat-square&logo=angular&logoColor=white" alt="Angular" />
+  </a>
+  &nbsp;
+  <img src="https://img.shields.io/badge/platform-linux-FCC624?style=flat-square&logo=linux&logoColor=black" alt="Linux" />
+</p>
+
+<br />
+
+</div>
+
+## Overview
 
 ---
 
-## Why Blink?
+**Blink** is a minimal launcher for Linux: press **Ctrl+Space**, type part of an app name, and launch from the list. It stays out of the way—borderless, transparent, no taskbar entry until you need it—while indexing Freedesktop **`.desktop`** entries from system paths, **Flatpak**, **Snap**, and **`~/.local/share/applications`**. Matching prefers names that **start** with your query, then **contains**; launches go through **`gio launch`** so behavior matches your desktop environment.
 
-- **Stays out of the way** until you summon it: borderless, transparent window that does not clutter the taskbar.
-- **Knows your Linux apps** by scanning standard Freedesktop locations: system packages, **Flatpak**, **Snap**, and `~/.local/share/applications`.
-- **Sensible matching**: prefix matches rank above substring matches; results are capped for snappy typing.
-- **Native launch** via `gio launch`, so behavior matches what your desktop environment expects.
+Built with **[Tauri 2](https://v2.tauri.app/)** and **[Angular](https://angular.dev/)**.
 
 ---
 
-## Requirements for development (Linux)
+## Highlights
 
-You will need:
+- **Global shortcut** — show or focus the overlay with **Ctrl+Space** (configurable in code).
+- **Fast search** — debounced query against a prebuilt index of installed applications.
+- **Packaged for Debian** — `.deb` with icons under **`hicolor`** and a **`.desktop`** entry for your app menu.
+
+---
+
+## Requirements (development on Linux)
 
 | Tool | Notes |
 |------|--------|
-| **Node.js** | A current LTS (e.g. 20+) works well with the Angular toolchain in this repo. |
+| **Node.js** | Current LTS (e.g. 20+) for the Angular toolchain. |
 | **Rust** | Stable toolchain via [rustup](https://rustup.rs/). |
-| **System libraries** | WebKitGTK and friends for Tauri. Install the packages your distro documents for **Tauri v2**; see the [official Linux prerequisites](https://v2.tauri.app/start/prerequisites/#linux). |
+| **System libraries** | WebKitGTK and related packages for Tauri — see [Tauri v2 Linux prerequisites](https://v2.tauri.app/start/prerequisites/#linux). |
 
-**Runtime** (for launching apps): `gio` from **GLib** is used to open `.desktop` files. On Debian/Ubuntu this is typically in `libglib2.0-bin`, which the packaged `.deb` already lists as a dependency.
+**Runtime** for launching apps: **`gio`** (usually **`libglib2.0-bin`** on Debian/Ubuntu); the packaged `.deb` declares this dependency.
 
 ---
 
