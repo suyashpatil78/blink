@@ -17,9 +17,12 @@
         "height": 600,
         "decorations": false,
         "alwaysOnTop": true,
+        "visibleOnAllWorkspaces": true,
         "skipTaskbar": true,
         "transparent": true,
-        "fullscreen": true
+        "fullscreen": false,
+        "maximized": true,
+        "visible": false
       }
     ],
     "security": {

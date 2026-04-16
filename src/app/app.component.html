@@ -1,8 +1,19 @@
-<main class="container">
-
-  <form class="row" (submit)="onSubmit($event)">
-    <input #greetInput id="greet-input" placeholder="Enter command" />
+<main class="launcher">
+  <form class="search-shell" (submit)="onSubmit($event)" autocomplete="off">
+    <label class="sr-only" for="launcher-input">Search</label>
+    <input
+      #launcherInput
+      id="launcher-input"
+      class="search-input"
+      type="search"
+      name="q"
+      [value]="query"
+      (input)="query = $any($event.target).value"
+      placeholder="Search apps, files, and more…"
+      spellcheck="false"
+      autofocus
+    />
   </form>
-
+  <p class="hint"><kbd>Ctrl</kbd> + <kbd>Space</kbd> to open · <kbd>Esc</kbd> to hide</p>
   <router-outlet />
 </main>
