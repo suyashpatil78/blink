@@ -7,13 +7,30 @@
       class="search-input"
       type="search"
       name="q"
-      [value]="query"
-      (input)="query = $any($event.target).value"
-      placeholder="Search apps, files, and more…"
+      [value]="query()"
+      (input)="updateQuery($any($event.target).value)"
+      placeholder="Search apps…"
       spellcheck="false"
       autofocus
     />
   </form>
-  <p class="hint"><kbd>Ctrl</kbd> + <kbd>Space</kbd> to open · <kbd>Esc</kbd> to hide</p>
+  <p class="hint"><kbd>Ctrl</kbd> + <kbd>Space</kbd> to open · <kbd>Esc</kbd> to hide · <kbd>Enter</kbd> to run first result</p>
+  @if (showSuggestionList()) {
+    <ul class="app-suggestions" role="listbox" aria-label="App matches">
+      @for (s of appSuggestions(); track s.desktopPath) {
+        <li
+          class="app-suggestion"
+          role="option"
+          tabindex="0"
+          (click)="launchApp(s)"
+          (keydown.enter)="launchApp(s)"
+        >
+          {{ s.name }}
+        </li>
+      } @empty {
+        <li class="app-suggestion app-suggestion--muted">No matching apps</li>
+      }
+    </ul>
+  }
   <router-outlet />
 </main>

@@ -88,3 +88,42 @@
   white-space: nowrap;
   border: 0;
 }
+
+.app-suggestions {
+  width: min(560px, 100%);
+  margin: 0.5rem 0 0;
+  padding: 0.25rem 0;
+  list-style: none;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(9, 9, 10, 0.92);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  max-height: min(50vh, 22rem);
+  overflow-y: auto;
+}
+
+.app-suggestion {
+  padding: 0.65rem 1rem;
+  font-size: 1rem;
+  line-height: 1.35;
+  color: #fafafa;
+  cursor: pointer;
+  outline: none;
+}
+
+.app-suggestion:hover,
+.app-suggestion:focus-visible {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.app-suggestion--muted {
+  cursor: default;
+  color: rgba(250, 250, 250, 0.45);
+}
+
+.app-suggestion--muted:hover,
+.app-suggestion--muted:focus-visible {
+  background: transparent;
+}
