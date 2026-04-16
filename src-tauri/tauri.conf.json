@@ -1,0 +1,33 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "blink",
+  "version": "0.1.0",
+  "identifier": "com.suyash.blink",
+  "build": {
+    "beforeDevCommand": "npm run start",
+    "devUrl": "http://localhost:1420",
+    "beforeBuildCommand": "npm run build",
+    "frontendDist": "../dist/blink/browser"
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "blink",
+        "width": 800,
+        "height": 600,
+        "decorations": false,
+        "alwaysOnTop": true,
+        "skipTaskbar": true,
+        "transparent": true,
+        "fullscreen": true
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all"
+  }
+}
