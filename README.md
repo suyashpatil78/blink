@@ -42,6 +42,10 @@ Built with **[Tauri 2](https://v2.tauri.app/)** and **[Angular](https://angular.
 
 ---
 
+## Preview
+<img width="800" height="450" alt="blink_preview" src="https://github.com/user-attachments/assets/87835240-ef93-4b16-8d20-fef25dd2943a" />
+
+
 ## Requirements (development on Linux)
 
 | Tool | Notes |
