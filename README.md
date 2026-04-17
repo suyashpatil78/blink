@@ -6,7 +6,7 @@
 
 <p>
   <a href="https://github.com/suyashpatil78/blink/releases">
-    <img src="https://img.shields.io/badge/release-v0.1.0-blue" alt="Release" />
+    <img src="https://img.shields.io/badge/release-v0.2.0-blue" alt="Release" />
   </a>
 
   <a href="https://v2.tauri.app">
@@ -69,12 +69,12 @@ This runs the Angular dev server on port **1420** and opens the Tauri shell. Use
 
 ## Installation
 
-- Download the `.deb` file from [here](https://github.com/suyashpatil78/blink/releases/download/v0.1.0/blink.deb). You can also check other releases in the release section.
+- Download the `.deb` file from [here](https://github.com/suyashpatil78/blink/releases/download/v0.2.0/blink_0.2.0_amd64.deb). You can also check other releases in the release section.
 
 - Install it with your package manager, for example:
 
 ```bash
-sudo apt install ./blink.deb
+sudo apt install ./blink_0.2.0_amd64.deb
 ```
 
 Adjust the filename to match with your downloaded file.
