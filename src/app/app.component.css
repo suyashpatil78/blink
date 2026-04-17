@@ -91,6 +91,43 @@
   border: 0;
 }
 
+.calculator-strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 0.75rem;
+  width: min(560px, 100%);
+  margin: 0.5rem 0 0;
+  padding: 0.65rem 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(120, 200, 255, 0.35);
+  background: rgba(12, 24, 40, 0.88);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.calculator-strip__label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(186, 220, 255, 0.75);
+}
+
+.calculator-strip__value {
+  font-size: 1.25rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  color: #f0f9ff;
+}
+
+.calculator-strip__hint {
+  margin-left: auto;
+  font-size: 0.8125rem;
+  color: rgba(240, 249, 255, 0.45);
+}
+
 .app-suggestions {
   width: min(560px, 100%);
   margin: 0.5rem 0 0;
