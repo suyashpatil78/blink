@@ -260,7 +260,9 @@ name = "blink"
 version = "0.1.0"
 dependencies = [
  "freedesktop_entry_parser",
+ "meval",
  "once_cell",
+ "regex",
  "serde",
  "serde_json",
  "tauri",
@@ -1042,7 +1044,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "2b368437186ec63ceb50d0832ee1ebcb5878037fe16ead1c68081d4aee0d140a"
 dependencies = [
  "indexmap 2.11.4",
- "nom",
+ "nom 8.0.0",
 ]
 
 [[package]]
@@ -2115,6 +2117,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "meval"
+version = "0.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f79496a5651c8d57cd033c5add8ca7ee4e3d5f7587a4777484640d9cb60392d9"
+dependencies = [
+ "fnv",
+ "nom 1.2.4",
+]
+
+[[package]]
 name = "mime"
 version = "0.3.17"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2203,6 +2215,12 @@ name = "nodrop"
 version = "0.1.14"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "72ef4a56884ca558e5ddb05a1d1e7e1bfd9a68d9ed024c21704cc98872dae1bb"
+
+[[package]]
+name = "nom"
+version = "1.2.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a5b8c256fd9471521bcb84c3cdba98921497f1a331cbc15b8030fc63b82050ce"
 
 [[package]]
 name = "nom"

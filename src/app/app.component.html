@@ -15,6 +15,16 @@
     />
   </form>
 
+  @if (calculatorResult(); as result) {
+    <div class="calculator-strip" role="status" aria-live="polite">
+      <span class="calculator-strip__label">Result</span>
+      <span class="calculator-strip__value">{{ result }}</span>
+      @if (appSuggestions().length === 0) {
+        <span class="calculator-strip__hint">Enter to copy</span>
+      }
+    </div>
+  }
+
   @if (showSuggestionList()) {
     <ul class="app-suggestions" role="listbox" aria-label="App matches">
       @for (s of appSuggestions(); track s.desktopPath) {

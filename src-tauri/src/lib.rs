@@ -1,6 +1,8 @@
 // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
 mod apps;
+mod calculator;
 
+use serde::Serialize;
 use tauri::Manager;
 use apps::{search_apps, AppSuggestion};
 
@@ -17,9 +19,19 @@ fn hide_launcher(app: tauri::AppHandle) -> Result<(), String> {
         .map_err(|e| e.to_string())
 }
 
+#[derive(Serialize)]
+#[serde(rename_all = "camelCase")]
+struct LauncherSearchResult {
+    apps: Vec<AppSuggestion>,
+    calculator: Option<String>,
+}
+
 #[tauri::command]
-fn search_apps_command(query: &str) -> Result<Vec<AppSuggestion>, String> {
-    search_apps(query.to_string())
+fn launcher_search(query: &str) -> Result<LauncherSearchResult, String> {
+    Ok(LauncherSearchResult {
+        apps: search_apps(query.to_string())?,
+        calculator: calculator::try_eval(query),
+    })
 }
 
 #[tauri::command]
@@ -32,7 +44,7 @@ fn global_shortcut_plugin() -> tauri::plugin::TauriPlugin<tauri::Wry> {
     use tauri_plugin_global_shortcut::{Builder as ShortcutBuilder, ShortcutState};
 
     ShortcutBuilder::new()
-        .with_shortcut("ctrl+space")
+        .with_shortcut("Shift+Alt+K")
         .expect("register ctrl+space shortcut")
         .with_handler(|app, _shortcut, event| {
             if event.state != ShortcutState::Pressed {
@@ -57,7 +69,7 @@ pub fn run() {
     }
 
     builder
-        .invoke_handler(tauri::generate_handler![greet, hide_launcher, search_apps_command, launch_desktop_file])
+        .invoke_handler(tauri::generate_handler![greet, hide_launcher, launcher_search, launch_desktop_file])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

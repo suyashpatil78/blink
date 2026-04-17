@@ -8,6 +8,11 @@ export interface AppSuggestion {
   desktopPath: string;
 }
 
+interface LauncherSearchResult {
+  apps: AppSuggestion[];
+  calculator: string | null;
+}
+
 @Component({
   selector: "app-root",
   imports: [RouterOutlet],
@@ -21,6 +26,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
   appSuggestions = signal<AppSuggestion[]>([]);
 
+  calculatorResult = signal<string | null>(null);
+
   private unlistenFocus?: () => void;
 
   private debounceTimer?: ReturnType<typeof setTimeout>;
@@ -33,6 +40,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
       if (!value) {
         this.appSuggestions.set([]);
+        this.calculatorResult.set(null);
         return;
       }
 
@@ -54,14 +62,16 @@ export class AppComponent implements OnInit, OnDestroy {
 
   private async search(query: string) {
     try {
-      const results = await invoke<AppSuggestion[]>(
-        "search_apps_command",
+      const { apps, calculator } = await invoke<LauncherSearchResult>(
+        "launcher_search",
         { query }
       );
 
-      this.appSuggestions.set(results);
+      this.appSuggestions.set(apps);
+      this.calculatorResult.set(calculator ?? null);
     } catch {
       this.appSuggestions.set([]);
+      this.calculatorResult.set(null);
     }
   }
 
@@ -84,10 +94,27 @@ export class AppComponent implements OnInit, OnDestroy {
     } catch {}
   }
 
-  onSubmit(event: SubmitEvent) {
+  async onSubmit(event: SubmitEvent) {
     event.preventDefault();
 
-    const first = this.appSuggestions()[0];
+    const apps = this.appSuggestions();
+    const calc = this.calculatorResult();
+
+    if (apps.length === 0 && calc !== null) {
+      try {
+        await navigator.clipboard.writeText(calc);
+      } catch {}
+
+      try {
+        await invoke("hide_launcher");
+        this.query.set("");
+        this.calculatorResult.set(null);
+      } catch {}
+
+      return;
+    }
+
+    const first = apps[0];
 
     if (first) {
       this.launchApp(first);
@@ -103,5 +130,6 @@ export class AppComponent implements OnInit, OnDestroy {
   closeLauncher() {
     invoke("hide_launcher");
     this.query.set("");
+    this.calculatorResult.set(null);
   }
 }
