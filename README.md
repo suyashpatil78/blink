@@ -43,10 +43,10 @@ Built with **[Tauri 2](https://v2.tauri.app/)** and **[Angular](https://angular.
 ---
 
 ## Preview
-<video>
-  <source src="https://github.com/suyashpatil78/blink/blob/master/blink_preview.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+
+https://github.com/user-attachments/assets/03ada4fd-c0ad-4672-8241-f1afcbd943cb
+
+
 
 ## Requirements (development on Linux)
 
