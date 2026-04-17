@@ -44,7 +44,7 @@ fn global_shortcut_plugin() -> tauri::plugin::TauriPlugin<tauri::Wry> {
     use tauri_plugin_global_shortcut::{Builder as ShortcutBuilder, ShortcutState};
 
     ShortcutBuilder::new()
-        .with_shortcut("Shift+Alt+K")
+        .with_shortcut("ctrl+space")
         .expect("register ctrl+space shortcut")
         .with_handler(|app, _shortcut, event| {
             if event.state != ShortcutState::Pressed {
