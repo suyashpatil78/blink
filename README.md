@@ -28,7 +28,7 @@
 
 ---
 
-**Blink** is a minimal launcher for Linux: press **Ctrl+Space**, type part of an app name, and launch from the list. It stays out of the way—borderless, transparent, no taskbar entry until you need it—while indexing Freedesktop **`.desktop`** entries from system paths, **Flatpak**, **Snap**, and **`~/.local/share/applications`**. Matching prefers names that **start** with your query, then **contains**; launches go through **`gio launch`** so behavior matches your desktop environment.
+**Blink** is a minimal launcher for Linux: press **Ctrl+Space**, type part of an app name, and launch from the list. It stays out of the way—borderless, transparent, no taskbar entry until you need it—while indexing Freedesktop **`.desktop`** entries from system paths, **Flatpak**, **Snap**, and **`~/.local/share/applications`**. Matching prefers names that **start** with your query, then **contains**; launches go through **`gio launch`** so behavior matches your desktop environment. It also supports searching Google with **`g <query>`**.
 
 Built with **[Tauri 2](https://v2.tauri.app/)** and **[Angular](https://angular.dev/)**.
 
@@ -39,6 +39,7 @@ Built with **[Tauri 2](https://v2.tauri.app/)** and **[Angular](https://angular.
 - **Global shortcut** — show or focus the overlay with **Ctrl+Space** (configurable in code).
 - **Fast search** — debounced query against a prebuilt index of installed applications.
 - **Packaged for Debian** — `.deb` with icons under **`hicolor`** and a **`.desktop`** entry for your app menu.
+- **Google search** — search Google with **`g <query>`**.
 
 ---
 
