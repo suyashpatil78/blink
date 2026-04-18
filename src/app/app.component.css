@@ -128,6 +128,55 @@
   color: rgba(240, 249, 255, 0.45);
 }
 
+.google-strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 0.75rem;
+  width: min(560px, 100%);
+  margin: 0.5rem 0 0;
+  padding: 0.65rem 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(130, 200, 150, 0.45);
+  background: rgba(14, 28, 22, 0.9);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  cursor: pointer;
+  outline: none;
+}
+
+.google-strip:hover,
+.google-strip:focus-visible {
+  border-color: rgba(160, 230, 180, 0.55);
+  background: rgba(18, 36, 28, 0.92);
+}
+
+.google-strip__label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(186, 240, 200, 0.85);
+}
+
+.google-strip__query {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #f4fdf7;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.google-strip__hint {
+  margin-left: auto;
+  font-size: 0.8125rem;
+  color: rgba(220, 250, 228, 0.5);
+}
+
 .app-suggestions {
   width: min(560px, 100%);
   margin: 0.5rem 0 0;
