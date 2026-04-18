@@ -48,6 +48,13 @@ Built with **[Tauri 2](https://v2.tauri.app/)** and **[Angular](https://angular.
 
 https://github.com/user-attachments/assets/4cc7b618-c8d9-4258-bb3e-c06423c9fc46
 
+## Screenshots
+
+<img width="877" height="528" alt="Screenshot from 2026-04-18 12-24-30" src="https://github.com/user-attachments/assets/4d487914-d21d-4a5b-874f-1efc4a2e8149" />
+<img width="867" height="538" alt="Screenshot from 2026-04-18 12-24-15" src="https://github.com/user-attachments/assets/c6d32572-9429-464b-bdc8-345608c31ce7" />
+<img width="870" height="537" alt="Screenshot from 2026-04-18 12-24-05" src="https://github.com/user-attachments/assets/6b1a4a52-12cd-4a20-a36b-a5ce3b953d67" />
+<img width="1010" height="601" alt="Screenshot from 2026-04-18 12-23-53" src="https://github.com/user-attachments/assets/52a6fad8-abb5-40ea-a37f-9f563f1d5929" />
+
 
 
 ## Requirements (development on Linux)
