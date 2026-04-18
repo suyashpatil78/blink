@@ -19,9 +19,24 @@
     <div class="calculator-strip" role="status" aria-live="polite">
       <span class="calculator-strip__label">Result</span>
       <span class="calculator-strip__value">{{ result }}</span>
-      @if (appSuggestions().length === 0) {
+      @if (appSuggestions().length === 0 && !googleSearch()) {
         <span class="calculator-strip__hint">Enter to copy</span>
       }
+    </div>
+  }
+
+  @if (googleSearch(); as gq) {
+    <div
+      class="google-strip"
+      role="button"
+      tabindex="0"
+      aria-label="Search Google"
+      (click)="launchGoogleSearch()"
+      (keydown.enter)="launchGoogleSearch()"
+    >
+      <span class="google-strip__label">Google</span>
+      <span class="google-strip__query">{{ gq }}</span>
+      <span class="google-strip__hint">Enter to search</span>
     </div>
   }
 

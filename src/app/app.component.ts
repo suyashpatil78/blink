@@ -11,6 +11,7 @@ export interface AppSuggestion {
 interface LauncherSearchResult {
   apps: AppSuggestion[];
   calculator: string | null;
+  googleSearch: string | null;
 }
 
 @Component({
@@ -28,6 +29,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
   calculatorResult = signal<string | null>(null);
 
+  googleSearch = signal<string | null>(null);
+
   private unlistenFocus?: () => void;
 
   private debounceTimer?: ReturnType<typeof setTimeout>;
@@ -41,6 +44,7 @@ export class AppComponent implements OnInit, OnDestroy {
       if (!value) {
         this.appSuggestions.set([]);
         this.calculatorResult.set(null);
+        this.googleSearch.set(null);
         return;
       }
 
@@ -62,16 +66,18 @@ export class AppComponent implements OnInit, OnDestroy {
 
   private async search(query: string) {
     try {
-      const { apps, calculator } = await invoke<LauncherSearchResult>(
+      const { apps, calculator, googleSearch } = await invoke<LauncherSearchResult>(
         "launcher_search",
         { query }
       );
 
       this.appSuggestions.set(apps);
       this.calculatorResult.set(calculator ?? null);
+      this.googleSearch.set(googleSearch ?? null);
     } catch {
       this.appSuggestions.set([]);
       this.calculatorResult.set(null);
+      this.googleSearch.set(null);
     }
   }
 
@@ -94,11 +100,30 @@ export class AppComponent implements OnInit, OnDestroy {
     } catch {}
   }
 
+  async launchGoogleSearch() {
+    const term = this.googleSearch();
+    if (!term) {
+      return;
+    }
+
+    try {
+      await invoke("open_google_search", { term });
+      await invoke("hide_launcher");
+      this.query.set("");
+      this.googleSearch.set(null);
+    } catch {}
+  }
+
   async onSubmit(event: SubmitEvent) {
     event.preventDefault();
 
     const apps = this.appSuggestions();
     const calc = this.calculatorResult();
+
+    if (this.googleSearch()) {
+      await this.launchGoogleSearch();
+      return;
+    }
 
     if (apps.length === 0 && calc !== null) {
       try {
@@ -131,5 +156,6 @@ export class AppComponent implements OnInit, OnDestroy {
     invoke("hide_launcher");
     this.query.set("");
     this.calculatorResult.set(null);
+    this.googleSearch.set(null);
   }
 }
