@@ -45,7 +45,8 @@ Built with **[Tauri 2](https://v2.tauri.app/)** and **[Angular](https://angular.
 
 ## Preview
 
-https://github.com/user-attachments/assets/03ada4fd-c0ad-4672-8241-f1afcbd943cb
+
+https://github.com/user-attachments/assets/4cc7b618-c8d9-4258-bb3e-c06423c9fc46
 
 
 
